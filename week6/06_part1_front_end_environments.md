@@ -2,11 +2,11 @@
 ## HTML/CSS/JavaScript: An Overview
 
 All the files you will want to use today are provided in the Week 6
-folder of the class repo.
+folder of the class repo. The files for the website are in 'website'.
 
 In the following steps, we create a blank document, fill it with HTML
-code, save it as **index.html**, and view results in our browser. We
-will hit on the concepts of HTML, style the page with CSS, and
+code, save it as an HTML file, and view results in our browser. Through the exercise, we
+will hit on the concepts of HTML, and then style the page with CSS and add interaction using JavaScript.
 
 #### Getting Started
 
@@ -15,6 +15,8 @@ the work we completed in Week 1. Push your files your Github site to
 publish your page. If you need a refresher, revisit Week 1 at:
 
 [Week 1 - Intro to Git and Github](https://github.com/civic-data-design-lab/16_11.S947/blob/master/week1/Part1_IntroGitAndGithub.ipynb)
+
+Start this week by copying the **website** folder in the class repo to your github.io directory. Then **change directory** in the terminal to this folder (website). This is our web directory that you can access by going to **username.github.io/website**.
 
 *How is everything related?*
 
@@ -25,15 +27,19 @@ of your page by creating elements in which your page materials are contained.
 
 ### Organize your Directory
 
-The directory in which you keep your website materials should be organized in the following manner.
+The web directory should be organized in the following manner.
 
-When a browser requests your page, your server will return the index.html file in the root-directory. The index.html is your 'root'... or 'home'... page.
+When a browser requests your page, your server will return the index.html file in the root-directory. The **index.html** is your 'root'... or 'home'... page.
 
 <img src="http://duspviz.mit.edu/wp-content/uploads/2015/01/file-structure.png" alt="Drawing"/>
 
+### Use a Text Editor
+
+Code is best written using a code editor such as [Sublime Text](https://www.sublimetext.com/). To complete the exercise, you will want to edit the files in the web folder using Sublime. If you do not have it installed, please [download](https://www.sublimetext.com/) it and install it at this time.
+
 ### Start up a Web Server
 
-To work with our website, we need our computer to act like a webserver, allowing it to access files online. There are many tools for doing this, and one is built right into python. Use the Terminal to change into the directory in which your website files reside. Once there, type the following to start a simple Python server.
+To work with our website, we need our computer to act like a webserver, allowing it to access files online. There are many tools for doing this, and one is built right into python. Use the Terminal to **change directory** to the folder in which your website files reside. Once there, type the following to start a simple Python server.
 
 ```xml
 $ python -m SimpleHTTPServer 8080
@@ -41,9 +47,11 @@ $ python -m SimpleHTTPServer 8080
 
 Now open a browser and access your site at: **http://localhost:8080**
 
-Modify and change folders in web folder, save and then refresh your page. Your page will appear as it would if it were live on the internet, except only visible to you locally. For more on this [click here](http://duspviz.mit.edu/tutorials/localhost-servers/).
+Modify and change folders in web folder, save and then refresh your page. Your page will appear as it would if it were live on the internet, except only visible to you locally. For more on the Python Web Server, see the following[DUSPviz page on localhosts](http://duspviz.mit.edu/tutorials/localhost-servers/).
 
 ### HTML: The Core Concepts
+
+Let's get started! Create a new blank text document in Sublime Text and save it as **index.html** in your web folder. The following introduces the core concepts behind HTML.
 
 All HTML documents start with the following line of code:
 
@@ -70,7 +78,7 @@ Comments look like the following. They are used to write human-readable notes in
 <!-- ... -->
 ```
 
-A basic page, all together, will look like this. This will look awfully similar to week 1. Copy and paste this into a blank text document, and save it in your **github.io** repository as *hello-world.html*.
+A basic page, all together, will look like this. This will look awfully similar to week 1. Copy and paste this into a blank text document, and save it in your **github.io/website** repository as *index.html*. This will now become the main page for you website.
 
 ```xml
 <!DOCTYPE html>
@@ -183,11 +191,12 @@ Our HTML document is looking bare, we need to add content. We can start by modif
 Modify the HTML code on the page to include the following. Add some paragraph **p** elements within the **div** element of your page.
 
 ```xml
+<h1 id="headtext">Body Heading</h1>
 <p id="foo">This is my first paragraph.</p>
 <p id="bar">This is my second paragraph.</p>
 ```
 
-The h1 tag signifies a heading, this is a bolded style of text that vary in size ranging from h1 to h6. The p tag signifies a paragraph that can contain large blocks of text. 
+The h1 tag signifies a heading, this is a bolded style of text that vary in size ranging from h1 to h6. The p tag signifies a paragraph that can contain large blocks of text. [Read more about HTML page elements](https://www.lehigh.edu/~inwww/seminar/reference/htmlchart.html).
 
 #### ii. Add a Link
 
@@ -197,14 +206,15 @@ Adding a link to your site is simple. To add a link, we use the a tag. The a tag
 <a href="http://dusp.mit.edu">Take me to DUSP.</a>
 ```
 
+You have many options for links. [Read about them here](http://www.w3schools.com/tags/tag_a.asp). For example, if you want a link to open in a new page, you can use **target="_blank"** as a property of the A tag.
+
 *Can you add a link that takes you to Google Maps?*
 
 #### iii. Add an Image
 
 Adding an image is just as easy as adding a hyperlink, although a bit different. An image is not stored on your webpage, but it sits on your server, just like your other files. When you display an image in an html file, you are linking to the image. The HTML tells the browser to locate and display it. Therefore, we will follow a multiple step process.
 
-* Create a folder named <strong>images</strong> in your special folder. <em>You only need to do this once, you can place all subsequent images here.</em>
-* Copy and paste <strong>cat.png</strong> from the downloaded materials into the <strong>images</strong> folder you just created.
+* Locate the folder named <strong>images</strong> that you copied to your web directory. <em>You will find one image here named **cat.png**. Here you store all subsequent images you want to use in your page.</em>
 * Use the <strong>img</strong> tag to link to that image in your <strong>index.html</strong>
 
 Your file structure, once the <strong>images</strong> folder is created and you have copied <strong>cat.png</strong>. In other words, the image is now being served.
@@ -216,6 +226,12 @@ Now we can add the image to our index.html. The following line of code uses the 
 Copy and paste this following line in between the <strong>body</strong> tags in your <strong>index.html</strong>, after your last paragraph.
 
 *Can you add another image, perhaps one showing Riyadh?*
+
+If you want to add an image from another page, you can simply include the URL at which the image is located. The following links to an image on Wikimedia.
+
+```xml
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/North_End%2C_Boston.jpg"/>
+```
 
 #### Our Code
 
@@ -382,6 +398,18 @@ a:hover {
 }
 ```
 
+#### Chaining
+
+To find selectors that are nested within other selectors, you can use the concept of **chaining**. Chaining is how we identify multiple ids, classes, and selectors.
+
+```css
+a circle {
+  color: orange;
+}
+```
+
+[Read more about it here.](https://css-tricks.com/multiple-class-id-selectors/)
+
 #### The Box Model: Size and Positioning
 
 Every element in your document is represented by a box. These boxes allow you to set properties such as margins around items. 
@@ -424,292 +452,4 @@ CSS is the way you style your page, learn more by referring to the references, o
 
 ===
 
-### JavaScript: The Core Concepts
-
-In the website ecosystem, the next component is the behavior. How do we take these styled elements and interact with them in a manner in which we can load data, dynamically populate elements, and create animations and interactions. This is where JavaScript comes in.
-
-<img src="images/environment.png" alt="Drawing" style="text-align: center; width: 75%;"/>
-
-#### What is JavaScript?
-
-JavaScript is a web programming language that manipulates and controls the behavior of web pages by interacting with the various elements on the page and loading data. It, along with HTML and CSS, forms the foundation of modern web browsers and the internet. JavaScript is considered, unofficially, to be the most popular programming language in the world. Many web site templates, such as Bootstrap, are in JavaScript, and it is the programming language that most of the major mapping and data visualization libraries, including Leaflet and D3 that we are using in this course, are implemented in.
-
-One of the major concepts in web development is that of **server-side** versus **client-side**. The server is the location on the web that *serves* your website to the rest of the world, the client is the computer that is accessing that website, requesting information from the server. JavaScript can be both, but is primarily a client-side language, working on your client computer. In the manner we are using it, JavaScript is a scripting language that will operate in two fundamental ways. The first is executing scripts and tasks when the web page is loaded (i.e. load a dataset on page open), and the second is executing scripts and tasks after the web page visitor tells it to (i.e. clicking a button) or another task is completed (i.e. a menu is closed). When the script executes, it can manipulate the content of the page, change how it is being viewed through the browser, give information to a server, or tell the browser to go back to the server and get new information. Often, however, the instructions given by the script can be followed without additional communication with the server.
-
-JavaScript, in a manner similar to CSS, interacts with HTML elements using the DOM.
-
-<img src="http://duspviz.mit.edu/wp-content/uploads/2015/02/dom_model.jpg" alt="Drawing" style="text-align: center; width: 75%;"/>
-
-When you are working with D3, some of your main goals will be to:
-
-* Create Elements
-* Load and Bind Data
-* Modify Element Properties
-* Write Functions
-* Listen for User Interaction
-
-#### Link a JavaScript Document to your Site
-
-CSS can be added to style your website in one of a few ways. You can apply CSS to individual elements, embed it within your HTML document, or create a separate CSS file and link it to your HTML doc. In your file, add the following link in **head** section of your document.
-
-JavaScript can be added to your website by either typing in script between two **script** tags, or by linking a JavaScript file your site. In your file, at the bottom of the **body** section, add the following code snip. This will read all code found in the *main.js* file that is in the **js** folder.
-
-```xml
-<script src="js/main.js"></script>
-```
-
-In the body of your HTML document, above the script. Add a button using the following. When clicked, this button will run the function named **helloworld()** in our main.js JavaScript file, and change the content of the paragraph elements with *id="foo"*.
-
-```xml
-<button type="button" onclick="helloworld()">Click Me!</button>
-```
-
-Now, we are programming. Typical JavaScript syntax:
-
-**Variable**
-
-var
-
-**Object**
-
-**Method/Function**
-
-#### The In-browser JavaScript Console
-
-JavaScript is the language of the modern web browser. Modern web browsers have JavaScript consoles built that we can explore the basics of the language with. Open up our browser, navigate to a page, and open the browser JavaScript console and do some basic coding to show some of the principles. If you are using Chrome or Firefox, there are integrated JavaScript consoles that allow you to input and explore JavaScript. Use **CTRL+SHIFT+K** (Windows)/**CMD+OPTION+K** (Mac) for Firefox, and **CTRL+SHIFT+J** (Windows)/**CMD+OPTION+J** (Mac) for Chrome. In the following steps we will introduce some concepts, try them using the console, and look for how the concepts manifest in our web map code.
-
-<img src="http://duspviz.mit.edu/wp-content/uploads/2015/02/browser-jsconsole.png" alt="Drawing"/>
-
-In your JavaScript code, if you ever want to log something to the console, use:
-
-```js
-console.log([object]);
-
-// for example
-console.log("Hello world");
-
-// or
-var hello = "Hello world"
-console.log(hello)
-```
-
-#### Introducing Objects: The Foundation of JavaScript
-
-Objects are the kings of JavaScript and almost everything you work with in JavaScript is an object. Objects are elements of JavaScript that have properties and values. To illustrate this, I will reference a nice example from W3schools, in real life, a car is an **object**. This car has **properties** like weight and color that are set to certain **values**, and it has **methods**, like start and stop.
-
-<img src="http://duspviz.mit.edu/wp-content/uploads/2015/02/js_object.png" alt="Drawing"/>
-
-You will commonly be accessing objects within objects. Typical syntax might look like the following.
-
-```js
-[object1].[object2].[method]
-
-// ie when working with Leaflet
-L.tileLayer().addTo(map);
-
-// ie when working with D3
-d3.select("body").append("svg");
-```
-
-Our page elements from our HTML webpage document can be referenced through JavaScript. Using JavaScript, we can change the properties of these elements and tell them to do things, like change color, or disappear. Imagine in our car example, to create a Ferrari and tell it to be red, we can create a car **div** with **id="myFerrari"**, then make it red by setting the **color** method **(myFerrari.color = "red")**.
-
-Object properties, and objects themselves, can be stored stored and accessed for later use using variables.
-
-#### Variables
-
-Variables are containers that hold data values, simple or complex, that can be referred to later in your code, much like algebra. For example, in order to fully instantiate the Leaflet map object, we have to use our script to create an object that will hold the Leaflet map object. The map object creates a map, but to put in our page, we need to create another object that will contain the map that is created. To do this, we use a [variable](http://www.w3schools.com/js/js_variables.asp).
-
-The following are examples of variables. Plug these into your JavaScript console one by one, hitting enter after each. Note the semicolon. All individual lines in JavaScript must end with a semicolon.
-
-```js
-var x = 5;
-var y = 6;
-var z = x + y;
-```
-In your JavaScript console, to see a current value of a variable, type it and hit enter, it will return the current value.
-
-
-```js
-z;
-// will return
-11
-```
-
-#### Data Types
-
-These variable values fall into two different data types, primitive and reference. Data in JavaScript are objects that represent values or other objects. Primitive data types must be of a specific type, where Reference data types can be thought of a references to other objects in your document.
-
-Primitive Data Types
-
-* **Boolean:** true or false
-* **Number:** Any integer or floating-point value
-* **String:** Text characters that are delimited by quotes
-* **Null:** Variable set to have the value of null
-* **Undefined:** Variable declared, but set to have no value
-
-Examples of JavaScript data, and what can be stored as a variable and referred to later are shown below. Variables can contain many different data types, including strings, numbers, and even entire objects, arrays, and functions. To familiarize yourself with data in JavaScript, try some of the following in your browser JavaScript console.
-
-#### Primitive Data Types
-
-##### String
-
-```js
-var name = "Michael";
-var selection = "a";
-console.log(name);
-console.log(selection);
-console.log(name + selection); // string concatenation
-```
-
-##### Number
-
-```js
-var count = 25;
-var cost = 1.51;
-```
-
-##### Boolean
-
-```js
-var found = true;
-var lost = false;
-```
-
-##### Null
-NULL objects can be created if you need an object, but you dont have anything to put in it yet you can populate it at a later point
-
-```js
-var object = null;
-```
-
-##### Undefined
-Undefined creates the variable so it exists in the DOM, but does not give it any definition. You can define it (populate it) at a later point.
-
-```js
-var flag = undefined;
-var ref;
-```
-
-#### Reference Data Types
-
-##### Array
-
-```js
-var array = []; //empty array
-var array1 = [ 1, 3, 5 ]; //populated array
-```
-
-You can access array elements much like in Python. Note the first position is 0.
-
-```js
-array1[];
-[1, 3, 5]
-array1[0];
-[1]
-array1[1];
-3
-```
-
-##### Object Literal
-
-Object Literal data type is a comma separated list of name value pairs. Kind of like a **dict** in Python.
-
-```js
-var workshop = {
-    name: "Web Map Workshop",
-    year: 2015
-};
-
-console.log(workshop.name);
-```
-##### Function
-
-You can place functions within variables.
-
-```js
-var myFunction = function(){};
-```
-
-#### Variable Scope
-
-How long do variables last when you declare them? There are two main types of variables, global variables and local variables. Variables declared within a function are **Local** to that function. Values held within a local variable will not be usable after the function ends. Variables declared outside a function are **Global**, and can be used anywhere on the webpage.
-
-##### Local Variable
-
-```js
-// code that sits here can not use carName
-function myFunction() {
-    var carName = "Volvo";
-    // code here can use carName
-}
-```
-
-##### Global Variable
-
-```js
-var carName = " Volvo";
-// code here can use carName
-function myFunction() {
-    // code here can use carName
-}
-```
-
-#### More on Methods
-
-Methods are the options and actions that can be performed on objects. Using the car as an object analogy, the methods might be start, drive, brake, and stop. These are actions the car can perform. In other words, write a function that defines how to start the car. In JavaScript, to start the car, access the start method by using **car.start()**. Likewise, write one for brake. Access the brake method by using **car.brake()**.
-
-#### Properties and Values
-
-Properties are the values associated with a JavaScript object. Let's use the car example again, for the object car, say it has the properties of make, model, weight, and color. Each of these can be set to a value.
-
-```js
-var car = {
-    make:"Ford",
-    model: "Mustang",
-    year: 2013,
-    color: "Red"
-};
-```
-
-This creates an object called car, then sets the properties of car to be a Red 2013 Ford Mustang. To access this property, we would type the object name and property **(objectName.property)**, for example, **car.make = "Ford"**.
-
-If we wanted to change the color, we would access it through this method. For example, overwrite the color property currently set to "Red" by changing it to "Blue" by using the following.
-
-```js
-> car.color;
-"Red"
-> car.color = "Blue";
->
-> car.color;
-"Blue"
-```
-
-[Read more about objects and properties](http://www.w3schools.com/js/js_properties.asp)
-
-#### Flow Control
-
-Statements in your document will run top to bottom, but you can control this using conditionals and loops.
-
-
-
-#### Working with Libraries
-
-A library is a collection of pre-written JavaScript with allows for easier development of JavaScript based applications. Libraries are packages of code that when loaded into your document allow access to the objects of that code. In this class, we are primarily going to be using three JavaScript libraries: **jQuery**, **Leaflet**, and **D3**.
-
-#### Let's Make a Leaflet Map
-
-===
-
-### Website Frameworks
-
-Often, to do all of this, you don't need to reinvent the wheel. Frameworks have been created that help website developers with layout, CSS, elements, and JavaScript interactions.
-
-For a crash course in Bootstrap, a highly used and robust framework, please visit the following tutorial.
-
-[Bootstrap Templates](http://duspviz.mit.edu/web-map-workshop/bootstrap-templates/)
-
-
-====
-### Push to Github
-
-Finally, when done with your edits. Commit yourPush your site to Github
+This is the end of Part 1. [Continue to Part 2 for an introduction to JavaScript!](https://github.com/civic-data-design-lab/16_11.S947/blob/master/week6/06_part2_front_end_environments.md)
